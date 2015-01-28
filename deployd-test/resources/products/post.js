@@ -1,0 +1,1 @@
+emit('products:create', this);
