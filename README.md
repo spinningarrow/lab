@@ -1,3 +1,5 @@
 # Lab
 
-This is where I experiment and learn with new things. Each folder is a distinct project. Since these are mostly for playing around, things may be incomplete.
+This repository is a collection of projects for things I'm learning or experimenting with. More information can be found in the `README` files inside each project.
+
+Here be dragons.
