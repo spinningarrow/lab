@@ -24,6 +24,6 @@ function prepend(list, element) {
 }
 
 function nth(list, index) {
-	if (index === 0) return list.value;
-	return nth(list.rest, --index);
+	if (index === 0) return list.value
+	return nth(list.rest, --index)
 }
