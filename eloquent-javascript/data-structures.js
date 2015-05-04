@@ -46,6 +46,7 @@ function prepend(list, element) {
 }
 
 function nth(list, index) {
+	if (!list) return undefined
 	if (index === 0) return list.value
 	return nth(list.rest, --index)
 }
@@ -82,6 +83,4 @@ assert.deepEqual(prepend(list, 1), {
 assert.equal(nth(list, 0), 1)
 assert.equal(nth(list, 1), 2)
 assert.equal(nth(list, 2), 3)
-assert.throws(function () {
-	nth(list, 3)
-})
+assert.equal(nth(list, 3), undefined)
