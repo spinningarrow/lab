@@ -1,14 +1,23 @@
 /*eslint curly: [2, "multi-line"]*/
 
 // A list (linked list)
-// e.g. var list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } }
+// e.g. var list = { value: 1, rest: { value: 2, rest: null }
 
+// Non-recursive (loop) implementation
 function arrayToList(array) {
+	var list = null
+
+	array.forEach(function (element) {
+		list = prepend(list, element)
+	})
+
+	return list
 }
 
 function listToArray(list) {
 	function listToArrayHelper(list, array) {
 		array.push(list.value)
+
 		if (!list.rest) return array
 		return listToArrayHelper(list.rest, array)
 	}
