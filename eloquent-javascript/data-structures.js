@@ -1,4 +1,5 @@
-/*eslint curly: [2, "multi-line"]*/
+/*global require*/
+var assert = require('assert')
 
 // A list (linked list)
 // e.g. var list = { value: 1, rest: { value: 2, rest: null }
@@ -7,7 +8,7 @@
 function arrayToList(array) {
 	var list = null
 
-	array.forEach(function (element) {
+	array.reverse().forEach(function (element) {
 		list = prepend(list, element)
 	})
 
@@ -22,7 +23,8 @@ function listToArray(list) {
 		return listToArrayHelper(list.rest, array)
 	}
 
-	listToArrayHelper(list, [])
+	if (!list) return [];
+	return listToArrayHelper(list, [])
 }
 
 function prepend(list, element) {
@@ -36,3 +38,37 @@ function nth(list, index) {
 	if (index === 0) return list.value
 	return nth(list.rest, --index)
 }
+
+// TESTS
+var list = {
+	value: 1,
+	rest: {
+		value: 2,
+		rest: {
+			value: 3,
+			rest: null
+		}
+	}
+}
+
+// arrayToList
+assert.deepEqual(arrayToList([]), null)
+assert.deepEqual(arrayToList([1, 2, 3]), list)
+
+// listToArray
+assert.deepEqual(listToArray(null), [])
+assert.deepEqual(listToArray(list), [1, 2, 3])
+
+// prepend
+assert.deepEqual(prepend(list, 1), {
+	value: 1,
+	rest: list
+})
+
+// nth
+assert.equal(nth(list, 0), 1)
+assert.equal(nth(list, 1), 2)
+assert.equal(nth(list, 2), 3)
+assert.throws(function () {
+	nth(list, 3)
+})
