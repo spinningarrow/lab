@@ -87,8 +87,10 @@ assert.equal(nth(list, 3), undefined)
 
 // II. Deep comparison
 function deepEqual(a, b) {
-	if (typeof a !== typeof b) return false
-	if (typeof a !== 'object' || a === null) return a === b
+	if (typeof a !== 'object' ||
+		typeof b !== 'object' ||
+		a === null || b === null) return a === b
+
 	if (Object.keys(a).length !== Object.keys(b).length) return false
 
 	for (var key in a) {
@@ -100,11 +102,16 @@ function deepEqual(a, b) {
 
 // TESTS
 assert(deepEqual(1, 1))
+assert(!deepEqual(1, '1'))
 assert(deepEqual('1', '1'))
 assert(deepEqual(null, null))
+assert(!deepEqual(null, false))
 assert(deepEqual(true, true))
 assert(deepEqual([], []))
 assert(deepEqual([1, 2, '3'], [1, 2, '3']))
 assert(deepEqual({ a: 1, b: 2 }, { b: 2, a: 1 }))
 assert(deepEqual([1, { a: 1, b: 2 }, '3'], [1, { a: 1, b: 2 }, '3']))
 assert(deepEqual({ a: { b: { c: false } } }, { a: { b: { c: false} } }))
+assert(!deepEqual({ a: { b: { c: false } } }, { a: { c: { b: false} } }))
+assert(!deepEqual({ a: { b: { c: 5 } } }, { a: { b: null } }))
+assert(!deepEqual({ a: { b: { c: 5 } } }, { a: { b: { d: 5 } } }))
