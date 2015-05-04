@@ -15,6 +15,15 @@ function arrayToList(array) {
 	return list
 }
 
+// Recursive implementation
+function rArrayToList(array) {
+	if (!array.length) return null
+	return {
+		value: array.shift(),
+		rest: rArrayToList(array)
+	}
+}
+
 function listToArray(list) {
 	function listToArrayHelper(list, array) {
 		array.push(list.value)
@@ -54,6 +63,8 @@ var list = {
 // arrayToList
 assert.deepEqual(arrayToList([]), null)
 assert.deepEqual(arrayToList([1, 2, 3]), list)
+assert.deepEqual(rArrayToList([]), null)
+assert.deepEqual(rArrayToList([1, 2, 3]), list)
 
 // listToArray
 assert.deepEqual(listToArray(null), [])
