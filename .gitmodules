@@ -4,3 +4,12 @@
 [submodule "iloveponies/p-p-p-pokerface"]
 	path = iloveponies/p-p-p-pokerface
 	url = https://github.com/spinningarrow/p-p-p-pokerface.git
+[submodule "iloveponies/structured-data"]
+	path = iloveponies/structured-data
+	url = https://github.com/spinningarrow/structured-data.git
+[submodule "iloveponies/training-day"]
+	path = iloveponies/training-day
+	url = https://github.com/spinningarrow/training-day.git
+[submodule "iloveponies/i-am-a-horse-in-the-land-of-booleans"]
+	path = iloveponies/i-am-a-horse-in-the-land-of-booleans
+	url = https://github.com/spinningarrow/i-am-a-horse-in-the-land-of-booleans.git
