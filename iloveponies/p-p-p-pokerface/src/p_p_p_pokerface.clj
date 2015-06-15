@@ -1,20 +1,11 @@
 (ns p-p-p-pokerface)
 
-(defn- count-pairs [ranks]
-  (let [rank-freq-vals (vals (frequencies ranks))
-        pair-ranks-vals (filter #(>= % 2) rank-freq-vals)]
-    (count pair-ranks-vals)))
-
 (defn- consecutive? [items]
   (let [items (sort items)]
-    (and
-      (apply < items)
-      (=
-       (dec (count items))
-       (- (last items) (first items))))))
+    (= items (range (first items) (inc (last items))))))
 
-(defn high-card? [hand]
-  true)
+(defn- max-rank-frequency [ranks]
+  (apply max (vals (frequencies ranks))))
 
 (defn rank [card]
   (let [[rank _] card
@@ -27,24 +18,24 @@
   (let [[_ suit] card]
     (str suit)))
 
+(defn high-card? [hand]
+  true)
+
 (defn pair? [hand]
   (let [ranks (map rank hand)]
-    (>= (count-pairs ranks) 1)))
+    (>= (max-rank-frequency ranks) 2)))
 
 (defn three-of-a-kind? [hand]
-  (let [ranks (map rank hand)
-        rank-freq-vals (vals (frequencies ranks))]
-    (boolean (some (fn [x] (>= x 3)) rank-freq-vals))))
+  (let [ranks (map rank hand)]
+    (>= (max-rank-frequency ranks) 3)))
 
 (defn four-of-a-kind? [hand]
-  (let [ranks (map rank hand)
-        rank-freq-vals (vals (frequencies ranks))]
-    (boolean (some (fn [x] (>= x 4)) rank-freq-vals))))
+  (let [ranks (map rank hand)]
+    (>= (max-rank-frequency ranks) 4)))
 
 (defn flush? [hand]
-  (let [suits (map suit hand)
-        suit-freq-vals (vals (frequencies suits))]
-    (= 1 (count suit-freq-vals))))
+  (let [suits (map suit hand)]
+    (apply = suits)))
 
 (defn full-house? [hand]
   (let [ranks (map rank hand)
@@ -52,15 +43,17 @@
     (= [2 3] (sort rank-freq-vals))))
 
 (defn two-pairs? [hand]
-  (let [ranks (map rank hand)]
-    (>= (count-pairs ranks) 2)))
+  (let [ranks (map rank hand)
+        rank-frequencies (frequencies ranks)
+        rank-pairs (filter #(>= (val %) 2) rank-frequencies)]
+    (>= (count rank-pairs) 2)))
 
 (defn straight? [hand]
-  (let [ranks (map rank hand)
-        replaced-ranks (replace {14 1} ranks)]
+  (let [high-ace-ranks (map rank hand)
+        low-ace-ranks (replace {14 1} high-ace-ranks)]
     (or
-      (consecutive? ranks)
-      (consecutive? replaced-ranks))))
+      (consecutive? high-ace-ranks)
+      (consecutive? low-ace-ranks))))
 
 (defn straight-flush? [hand]
   (and (straight? hand) (flush? hand)))
