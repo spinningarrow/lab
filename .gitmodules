@@ -1,0 +1,3 @@
+[submodule "iloveponies/predicates"]
+	path = iloveponies/predicates
+	url = https://github.com/spinningarrow/predicates.git
