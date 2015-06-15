@@ -9,7 +9,7 @@ These are solutions to the [Functional Programming in Clojure](http://mooc.fi/co
 - [x] I am a horse in the land of booleans
 - [x] Structured Data
 - [x] Style
-- [ ] P-P-P-Pokerface
+- [x] P-P-P-Pokerface
 - [ ] Predicates
 - [ ] Recursion
 - [ ] Looping is recursion
