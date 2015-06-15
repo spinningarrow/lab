@@ -1,3 +1,6 @@
 [submodule "iloveponies/predicates"]
 	path = iloveponies/predicates
 	url = https://github.com/spinningarrow/predicates.git
+[submodule "iloveponies/p-p-p-pokerface"]
+	path = iloveponies/p-p-p-pokerface
+	url = https://github.com/spinningarrow/p-p-p-pokerface.git
