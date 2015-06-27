@@ -10,7 +10,7 @@ These are solutions to the [Functional Programming in Clojure](http://mooc.fi/co
 - [x] Structured Data
 - [x] Style
 - [x] P-P-P-Pokerface
-- [ ] Predicates
+- [x] Predicates
 - [ ] Recursion
 - [ ] Looping is recursion
 - [ ] One function to rule them all
