@@ -13,3 +13,6 @@
 [submodule "iloveponies/i-am-a-horse-in-the-land-of-booleans"]
 	path = iloveponies/i-am-a-horse-in-the-land-of-booleans
 	url = https://github.com/spinningarrow/i-am-a-horse-in-the-land-of-booleans.git
+[submodule "iloveponies/recursion"]
+	path = iloveponies/recursion
+	url = https://github.com/spinningarrow/recursion.git
