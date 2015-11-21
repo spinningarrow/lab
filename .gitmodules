@@ -16,3 +16,6 @@
 [submodule "iloveponies/recursion"]
 	path = iloveponies/recursion
 	url = https://github.com/spinningarrow/recursion.git
+[submodule "iloveponies/looping-is-recursion"]
+	path = iloveponies/looping-is-recursion
+	url = https://github.com/spinningarrow/looping-is-recursion
