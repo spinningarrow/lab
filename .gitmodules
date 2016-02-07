@@ -19,3 +19,6 @@
 [submodule "iloveponies/looping-is-recursion"]
 	path = iloveponies/looping-is-recursion
 	url = https://github.com/spinningarrow/looping-is-recursion
+[submodule "build-your-own-lisp"]
+	path = build-your-own-lisp
+	url = https://github.com/spinningarrow/build-your-own-lisp
